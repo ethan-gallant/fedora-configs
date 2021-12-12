@@ -1,0 +1,9 @@
+# For safety because sobriety isn't always guaranteed
+**/
+!/profile/.config/bspwm/**
+!/profile/.config/bin/**
+!/profile/.config/telepresence/**
+!/profile/.config/sxhkd/**
+!/profile/.config/polybar/**
+!/docker/*/docker-compose.yaml
+!/.gitignore
