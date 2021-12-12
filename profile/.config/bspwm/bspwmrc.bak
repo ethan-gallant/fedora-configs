@@ -1,0 +1,45 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+xrdb -merge .Xdefaults &
+xset r rate 300 50 &
+xset +fp /home/spectre/.local/share/fonts
+xset +fp /home/spectre/.fonts
+xset fp rehash
+xset -b &
+
+bspc monitor HDMI-0 -d I II III 
+bspc monitor DP-1 -d IV V VI
+bspc monitor DP-3 -d VII VIII IX
+
+bspc config border_width         2
+bspc config window_gap           3
+bspc config remove_unplugged_monitors true
+bspc config remove_disabled_monitors true
+
+
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gnome terminal='^4'
+bspc rule -a Chrome desktop='^7'
+bspc rule -a Spotify desktop='^1'
+bspc rule -a jetbrains-idea desktop='^4'
+bspc rule -a jetbrains-toolbox desktop='^4'
+bspc rule -a origin state=floating
+bspc config click_to_focus button1
+
+
+bspc wm --adopt-orphans
+bspc config wm_name LG3D
+wmname LG3D #Sometimes it doesnt work
+
+~/.config/bin/java_nonreparenting_wm_hack.sh
+~/.config/bin/xrandr_config.sh
+feh --bg-fill ~/Pictures/valley.jpeg &
+/home/spectre/.config/polybar/launch.sh &
+
+

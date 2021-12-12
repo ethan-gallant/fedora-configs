@@ -1,0 +1,7 @@
+timeouts:
+  agentInstall: 2m
+  intercept: 2m
+logLevels:
+  userDaemon: debug
+grpc:
+  maxReceiveSize: 10Mi

@@ -1,0 +1,38 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor HDMI-0 -d 1 2 3 
+bspc monitor DP-5 -d 4 5 6
+bspc monitor DP-1 -d 7 8 9
+
+bspc config border_width         2
+bspc config window_gap           3
+bspc config remove_unplugged_monitors true
+bspc config remove_disabled_monitors true
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gnome terminal='^4'
+bspc rule -a Chrome desktop='^7'
+bspc rule -a Spotify desktop='^1'
+bspc rule -a jetbrains-idea desktop='^4'
+bspc rule -a jetbrains-toolbox desktop='^4'
+bspc rule -a jetbrains-goland desktop='^4'
+bspc rule -a origin state=floating
+bspc config click_to_focus button1
+
+
+bspc wm --adopt-orphans
+bspc config wm_name LG3D
+wmname LG3D #Sometimes it doesnt work
+
+/home/spectre/.config/bin/xrandr_config.sh &
+~/.config/bin/java_nonreparenting_wm_hack.sh
+
+feh --bg-fill ~/Pictures/background.jpg &
+/home/spectre/.config/polybar/launch.sh &
+
+
