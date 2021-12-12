@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+  nzbget:
+    image: lscr.io/linuxserver/nzbget
+    container_name: nzbget
+    environment:
+      - PUID=1001
+      - PGID=1002
+      - TZ=America/Halifax
+    volumes:
+      - /mnt/encrypted/nzb/config:/config
+      - /mnt/encrypted/nzb/downloads:/downloads
+    ports:
+      - 6789:6789
+    restart: unless-stopped

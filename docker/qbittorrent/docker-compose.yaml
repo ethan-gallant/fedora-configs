@@ -1,0 +1,21 @@
+---
+version: "2.1"
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent
+    container_name: qbittorrent
+    environment:
+      - PUID=1001
+      - PGID=1002
+      - TZ=America/Halifax
+      - WEBUI_PORT=7070
+    volumes:
+      - /srv/qbittorrent/config:/config
+      - /mnt/encrypted/plex:/plex
+      - /mnt/encrypted/downloads:/downloads
+      - /mnt/encrypted/torrents:/torrents
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 7070:7070
+    restart: unless-stopped
